@@ -7,12 +7,17 @@ class FileParser
     @file_path = file_path
   end
 
+  def split_by(delimiter_regexp)
+    lines = parse_lines
+    lines.map { |line| line.split(delimiter_regexp) }
+  end
+
+  private
+
   def parse_lines
     check_path_presence
     readlines
   end
-
-  private
 
   def check_path_presence
     raise 'Please provide a valid file path' if @file_path.nil?

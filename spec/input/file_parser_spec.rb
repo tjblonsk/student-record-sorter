@@ -2,17 +2,19 @@
 require './app/input/file_parser'
 
 RSpec.describe FileParser do
-  before do
-    @path = './data/comma.txt'
-    @file_parser = FileParser.new(@path)
-    @invalid_parser = FileParser.new(nil)
-  end
+  let(:path)            { './spec/fixtures/input.txt' }
+  let(:file_parser)     { FileParser.new(path) }
+  let(:comma_regexp)    { Regexp.new(/,\s/) }
+  let(:comma_array)     { File.open(path).readlines[0].split(comma_regexp) }
+  let(:invalid_parser)  { FileParser.new(nil) }
 
-  it 'must parse a txt file into an array of lines' do
-    expect(@file_parser.parse_lines).to eq File.open(@path).readlines
+  context 'comma delimiter' do
+    it 'must split into an array' do
+      expect(file_parser.split_by(comma_regexp)[0]).to eq comma_array
+    end
   end
 
   it 'must raise an error if no file path is provided' do
-    expect { @invalid_parser.parse_lines }.to raise_error(RuntimeError)
+    expect { invalid_parser.split_by(nil) }.to raise_error(RuntimeError)
   end
 end
