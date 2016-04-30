@@ -3,7 +3,7 @@ module FileParserInstructions
     comma: {
       delimiter: Regexp.new(/,\s/),
       order: [
-        'last_name', 'first_name', 'campus', 'favorite_color', 'date_of_birth'
+        :last_name, :first_name, :campus, :favorite_color, :date_of_birth
       ]
     }
   }

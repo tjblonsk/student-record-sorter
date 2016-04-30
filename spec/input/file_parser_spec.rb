@@ -3,7 +3,7 @@ require './app/input/file_parser'
 require './lib/file_parser_instructions'
 include FileParserInstructions
 
-RSpec.describe FileParser do
+describe FileParser do
   let(:path)            { './spec/fixtures/input.txt' }
   let(:file_parser)     { FileParser.new(path) }
   let(:comma_regexp)    { MAPPER[:comma][:delimiter] }
