@@ -8,6 +8,6 @@ class Student < OpenStruct
   end
 
   def to_s
-    DISPLAY_ORDER.map { |attribute| send(:attribute) }.join(' ')
+    DISPLAY_ORDER.map { |attribute| send(attribute) }.join(' ')
   end
 end

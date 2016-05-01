@@ -17,8 +17,6 @@ describe Outputter do
   end
 
   it 'calls #to_s on each object in a collection' do
-    p student.to_s
-    # expect { Outputter.new([student]).output }.to output(stdout).to_stdout
-    # expect(Outputter.new([student]).output).to eq output
+    expect { Outputter.new([student]).output }.to output(stdout).to_stdout
   end
 end
