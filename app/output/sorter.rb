@@ -1,3 +1,5 @@
+require 'date'
+
 class Sorter
   def initialize(student_collection)
     @students = student_collection

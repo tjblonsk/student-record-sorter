@@ -30,11 +30,13 @@ sorter = Sorter.new(student_collection)
 $stdout.puts 'Output 1:'
 sorted = sorter.sort_by(:campus, :last_name)
 Outputter.new(sorted).output
+$stdout.puts
 
-# $stdout.puts 'Output 2:'
-# sorted = sorter.sort_by_date_of_birth
-# Outputter.new(sorted).output
+$stdout.puts 'Output 2:'
+sorted = sorter.sort_by_date_of_birth
+Outputter.new(sorted).output
+$stdout.puts
 
-# $stdout.puts 'Output 3:'
-# sorted = sorter.sort_by_desc(:last_name)
-# Outputter.new(sorted).output
+$stdout.puts 'Output 3:'
+sorted = sorter.sort_by_desc(:last_name)
+Outputter.new(sorted).output
