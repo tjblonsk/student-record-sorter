@@ -5,7 +5,7 @@ include FileParserInstructions
 
 describe FileParser do
   let(:path)            { './spec/fixtures/input.txt' }
-  let(:input_fixture)   { File.open(path).readlines }
+  let(:input_fixture)   { File.open(path).readlines.map(&:strip) }
 
   let(:file_parser)     { FileParser.new(path) }
   let(:invalid_parser)  { FileParser.new(nil) }
@@ -16,21 +16,22 @@ describe FileParser do
 
   let(:dollar_line_idx)  { 1 }
   let(:dollar_regexp)    { MAPPER[:dollar][:delimiter] }
-  let(:dollar_array)     { input_fixture[dollar_line_idx].split(dollar_regexp) }
+  let(:dollar_line)      { input_fixture[dollar_line_idx] }
+  let(:dollar_array)     { dollar_line.gsub('LA', 'Los Angeles').split(dollar_regexp) }
 
   let(:pipe_line_idx)  { 2 }
   let(:pipe_regexp)    { MAPPER[:pipe][:delimiter] }
   let(:pipe_array)     { input_fixture[pipe_line_idx].split(pipe_regexp) }
 
-  it 'must split into an array by comma' do
+  it 'splits into an array by comma' do
     expect(file_parser.split_by(comma_regexp)[comma_line_idx]).to eq comma_array
   end
 
-  it 'must split into an array by dollar' do
+  it 'splits into an array by dollar' do
     expect(file_parser.split_by(dollar_regexp)[dollar_line_idx]).to eq dollar_array
   end
 
-  it 'must split into an array by pipe' do
+  it 'splits into an array by pipe' do
     expect(file_parser.split_by(pipe_regexp)[pipe_line_idx]).to eq pipe_array
   end
 

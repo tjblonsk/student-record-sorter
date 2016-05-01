@@ -8,8 +8,10 @@ class FileParser
   end
 
   def split_by(delimiter_regexp)
-    lines = parse_lines
-    lines.map { |line| line.split(delimiter_regexp) }
+    parse_lines.map do |line|
+      normalized_line = normalize_date(line.strip)
+      normalized_line.split(delimiter_regexp)
+    end
   end
 
   private
@@ -17,6 +19,13 @@ class FileParser
   def parse_lines
     check_path_presence
     readlines
+  end
+
+  def normalize_date(line)
+    new_line =
+      line.gsub(/NYC/, 'New York City')
+      .gsub(/LA/, 'Los Angeles')
+      .gsub(/SF/, 'San Francisco')
   end
 
   def check_path_presence

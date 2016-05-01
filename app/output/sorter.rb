@@ -18,7 +18,8 @@ class Sorter
   private
 
   def format_date(date)
-    Date.strptime(date, '%m/%d/%Y').strftime('%d/%m/%Y')
+    format = date =~ /\-/ ? '%m-%d-%Y' : '%m/%d/%Y'
+    Date.strptime(date, format).strftime('%d/%m/%Y')
   end
 
   def map_attrs(student, attributes)
