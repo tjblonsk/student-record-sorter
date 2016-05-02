@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Display each object in a collection.
 class Outputter
   def initialize(collection)
     @collection = collection

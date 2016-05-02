@@ -10,7 +10,7 @@ describe FileParser do
   let(:file_parser)     { FileParser.new(path) }
   let(:invalid_parser)  { FileParser.new(nil) }
 
-  let(:comma_line_idx)      { 0 }
+  let(:comma_line_idx) { 0 }
   let(:comma_regexp)    { MAPPER[:comma][:delimiter] }
   let(:comma_array)     { input_fixture[comma_line_idx].split(comma_regexp) }
 

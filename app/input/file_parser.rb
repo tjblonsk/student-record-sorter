@@ -22,10 +22,9 @@ class FileParser
   end
 
   def normalize_date(line)
-    new_line =
-      line.gsub(/NYC/, 'New York City')
-      .gsub(/LA/, 'Los Angeles')
-      .gsub(/SF/, 'San Francisco')
+    line.gsub(/NYC/, 'New York City')
+        .gsub(/LA/, 'Los Angeles')
+        .gsub(/SF/, 'San Francisco')
   end
 
   def check_path_presence

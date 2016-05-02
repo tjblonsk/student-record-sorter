@@ -3,7 +3,6 @@ require './app/output/outputter'
 require './app/collections/student'
 
 describe Outputter do
-
   let(:student_attrs) do
     {
       last_name: 'Kirlin', first_name: 'Mckayla',

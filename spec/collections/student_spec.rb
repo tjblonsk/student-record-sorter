@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require './app/collections/student'
 require './lib/file_parser_instructions'
 include FileParserInstructions

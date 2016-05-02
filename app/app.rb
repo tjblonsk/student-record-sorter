@@ -1,16 +1,37 @@
+# frozen_string_literal: true
 require './app/input/file_parser'
 require './app/collections/student'
 require './app/output/sorter'
 require './app/output/Outputter'
 require './lib/file_parser_instructions'
 
+## Input
+# Parse records from txt files located in ./data.
+# Pass file paths to FileParser.
+# Parsing instruction (meta data about each file)
+# located in ./lib/file_parser_instructions
+#
+## Collections
+# Each file line mapped to Student object.
+# Parsing of one file returns a collection of students.
+#
+## Output
+# Sorter sorts collection by attribute.
+# Outputter outputs each object in sorted collection.
+#
+# Run program with:
+# ruby app.rb
 class App
   include FileParserInstructions
 
   def parse_records
-    MAPPER.map do |name, data|
-      lines     = FileParser.new(data[:path]).split_by(data[:delimiter])
-      students  = build_students(lines, data[:order])
+    MAPPER.map do |_name, data|
+      file_path  = data[:path]
+      delimiter  = data[:delimiter]
+      line_order = data[:order]
+      lines      = FileParser.new(file_path).split_by(delimiter)
+
+      build_students(lines, line_order)
     end.flatten
   end
 
