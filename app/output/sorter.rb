@@ -10,7 +10,7 @@ class Sorter
 
   def sort_by_date_of_birth
     @students.sort_by do |student|
-      Date.parse(format_date(student.date_of_birth))
+      Date.parse(format_date(student.date_of_birth_formatted))
     end
   end
 
@@ -25,8 +25,7 @@ class Sorter
   private
 
   def format_date(date)
-    format = date =~ /\-/ ? '%m-%d-%Y' : '%m/%d/%Y'
-    Date.strptime(date, format).strftime('%d/%m/%Y')
+    Date.strptime(date, '%m/%d/%Y').strftime('%d/%m/%Y')
   end
 
   def map_attrs(student, attributes)

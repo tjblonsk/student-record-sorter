@@ -9,8 +9,8 @@ class FileParser
 
   def split_by(delimiter_regexp)
     parse_lines.map do |line|
-      normalized_line = normalize_date(line.strip)
-      normalized_line.split(delimiter_regexp)
+      normalized_line = normalize_city(line.strip)
+      split_Line = normalized_line.split(delimiter_regexp)
     end
   end
 
@@ -21,7 +21,7 @@ class FileParser
     readlines
   end
 
-  def normalize_date(line)
+  def normalize_city(line)
     line.gsub(/NYC/, 'New York City')
         .gsub(/LA/, 'Los Angeles')
         .gsub(/SF/, 'San Francisco')
