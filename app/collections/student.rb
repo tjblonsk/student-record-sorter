@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 require 'ostruct'
 
-# Return hash of attributes from an
-# array of values.
-# Build Student object from this hash.
+# Build Student object from this hash
+# of attrs built with self#build_attrs.
 class Student < OpenStruct
   DISPLAY_ORDER = [
-    :last_name, :first_name, :campus, :date_of_birth_formatted, :favorite_color].freeze
+    :last_name, :first_name, :campus,
+    :date_of_birth_formatted, :favorite_color].freeze
 
   def self.build_attrs(line, order)
     order.zip(line).to_h
@@ -14,7 +14,7 @@ class Student < OpenStruct
 
   def date_of_birth_formatted
     return date_of_birth unless date_of_birth =~ /\-/
-    date_of_birth.gsub('-', '/')
+    date_of_birth.tr('-', '/')
   end
 
   def to_s

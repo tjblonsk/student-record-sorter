@@ -6,10 +6,10 @@ require './app/output/Outputter'
 require './lib/file_parser_instructions'
 
 ## Input
-# Parse records from txt files located in ./data.
+# Parse records from txt files located in './data'.
 # Pass file paths to FileParser.
 # Parsing instruction (meta data about each file)
-# located in ./lib/file_parser_instructions
+# located in './lib/file_parser_instructions'.
 #
 ## Collections
 # Each file line mapped to Student object.
@@ -20,7 +20,7 @@ require './lib/file_parser_instructions'
 # Outputter outputs each object in sorted collection.
 #
 # Run program with:
-# ruby app.rb
+# ruby app/app.rb
 class App
   include FileParserInstructions
 

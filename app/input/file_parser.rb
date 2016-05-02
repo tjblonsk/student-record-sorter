@@ -2,6 +2,7 @@
 
 # Given a path to a file located on the machine,
 # opens the file and returns an array of lines.
+# Each line is an array of values, split by delimiter.
 class FileParser
   def initialize(file_path)
     @file_path = file_path
@@ -10,7 +11,7 @@ class FileParser
   def split_by(delimiter_regexp)
     parse_lines.map do |line|
       normalized_line = normalize_city(line.strip)
-      split_Line = normalized_line.split(delimiter_regexp)
+      normalized_line.split(delimiter_regexp)
     end
   end
 
